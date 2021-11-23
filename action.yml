@@ -23,7 +23,7 @@ inputs:
     default: ""
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://tortlewortle/sftp_upload_action:latest'
   env:
     FTP_SERVER: ${{ inputs.server }}
     FTP_USERNAME: ${{ inputs.username }}
