@@ -4,6 +4,8 @@ WORKDIR /go/src/app
 COPY . .
 
 RUN go get -d -v ./...
-RUN go build -o sftp_upload -v ./src/...
+RUN go build -o sftp_upload_action -v ./src/...
 
-ENTRYPOINT ["./sftp_upload"]
+RUN mv sftp_upload_action /usr/bin
+
+ENTRYPOINT ["sftp_upload_action"]
