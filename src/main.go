@@ -21,10 +21,27 @@ func main() {
 	remoteDir := os.Getenv("REMOTE_DIR")
 	deleteExisting := os.Getenv("DELETE_EXISTING")
 
-	if username == "" || host == "" || password == "" || localDir == "" || remoteDir == "" {
-		log.Fatalln("incompatible options")
-		return
+	var incomp []string
+	if username == "" {
+		incomp = append(incomp, "username")
 	}
+	if host == "" {
+		incomp = append(incomp, "host")
+	}
+	if password == "" {
+		incomp = append(incomp, "password")
+	}
+	if localDir == "" {
+		incomp = append(incomp, "localDir")
+	}
+	if remoteDir == "" {
+		incomp = append(incomp, "remoteDir")
+	}
+
+	 if len(incomp) > 0 {
+			log.Fatalf("incompatible options: %s\n", strings.Join(incomp, ", "))
+			return
+		}
 
 	githubActionPath := os.Getenv("GITHUB_ACTION_PATH")
 
