@@ -1,0 +1,32 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  server:  # id of input
+    description: 'ftp server'
+    required: true
+    default: ""
+  username:  # id of input
+    description: 'ftp username'
+    required: true
+    default: ""
+  password:  # id of input
+    description: 'ftp password'
+    required: true
+    default: ""
+  local_dir:  # id of input
+    description: 'local dir'
+    required: true
+    default: ""
+  remote_dir:  # id of input
+    description: 'server dir'
+    required: true
+    default: ""
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    FTP_SERVER: ${{ inputs.server }}
+    FTP_USERNAME: ${{ inputs.username }}
+    FTP_PASSWORD: ${{ inputs.password }}
+    LOCAL_DIR: ${{ inputs.local_dir }}
+    REMOTE_DIR: ${{ inputs.remote_dir }}
