@@ -15,7 +15,7 @@ import (
 
 func main() {
 	username := os.Getenv("FTP_USERNAME")
-	host := os.Getenv("FTP_HOST")
+	host := os.Getenv("FTP_SERVER")
 	password := os.Getenv("FTP_PASSWORD")
 	localDir := os.Getenv("LOCAL_DIR")
 	remoteDir := os.Getenv("REMOTE_DIR")
@@ -26,7 +26,7 @@ func main() {
 		incomp = append(incomp, "username")
 	}
 	if host == "" {
-		incomp = append(incomp, "host")
+		incomp = append(incomp, "server")
 	}
 	if password == "" {
 		incomp = append(incomp, "password")
